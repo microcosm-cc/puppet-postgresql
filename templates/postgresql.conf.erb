@@ -429,7 +429,7 @@ log_line_prefix = '%t '			# special values:
 # - Query/Index Statistics Collector -
 
 #track_activities = on
-#track_counts = on
+track_counts = on
 #track_functions = none			# none, pl, all
 #track_activity_query_size = 1024 	# (change requires restart)
 #update_process_title = on
@@ -448,7 +448,7 @@ log_line_prefix = '%t '			# special values:
 # AUTOVACUUM PARAMETERS
 #------------------------------------------------------------------------------
 
-#autovacuum = on			# Enable autovacuum subprocess?  'on'
+autovacuum = on			# Enable autovacuum subprocess?  'on'
 					# requires track_counts to also be on.
 #log_autovacuum_min_duration = -1	# -1 disables, 0 logs all actions and
 					# their durations, > 0 logs only
