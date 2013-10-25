@@ -428,12 +428,13 @@ log_line_prefix = '%t '			# special values:
 
 # - Query/Index Statistics Collector -
 
-#track_activities = on
+track_activities = on
 track_counts = on
-#track_functions = none			# none, pl, all
-#track_activity_query_size = 1024 	# (change requires restart)
+track_functions = all			# none, pl, all
+track_activity_query_size = 1024 	# (change requires restart)
+track_io_timing = on
 #update_process_title = on
-#stats_temp_directory = 'pg_stat_tmp'
+stats_temp_directory = 'pg_stat_tmp'
 
 
 # - Statistics Monitoring -
@@ -441,7 +442,7 @@ track_counts = on
 #log_parser_stats = off
 #log_planner_stats = off
 #log_executor_stats = off
-#log_statement_stats = off
+log_statement_stats = on
 
 
 #------------------------------------------------------------------------------
