@@ -192,7 +192,7 @@ shared_buffers = 24MB			# min 128kB
 
 # - Checkpoints -
 
-#checkpoint_segments = 3		# in logfile segments, min 1, 16MB each
+checkpoint_segments = 16		# in logfile segments, min 1, 16MB each
 #checkpoint_timeout = 5min		# range 30s-1h
 #checkpoint_completion_target = 0.5	# checkpoint target duration, 0.0 - 1.0
 #checkpoint_warning = 30s		# 0 disables
@@ -377,7 +377,7 @@ shared_buffers = 24MB			# min 128kB
 					#   fatal
 					#   panic (effectively off)
 
-log_min_duration_statement = 500 # -1 is disabled, 0 logs all statements
+log_min_duration_statement = 1000 # -1 is disabled, 0 logs all statements
 					# and their durations, > 0 logs only
 					# statements running at least this number
 					# of milliseconds
