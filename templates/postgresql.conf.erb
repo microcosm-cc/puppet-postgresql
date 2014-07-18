@@ -127,7 +127,7 @@ ssl_key_file  = $ssl_key_file    # default is 'server.key'
 
 # - Memory -
 
-shared_buffers = 24MB			# min 128kB
+shared_buffers = <%= @shared_buffers %>	# min 128kB
 					# (change requires restart)
 #temp_buffers = 8MB			# min 800kB
 #max_prepared_transactions = 0		# zero disables the feature
@@ -136,7 +136,7 @@ shared_buffers = 24MB			# min 128kB
 # per transaction slot, plus lock space (see max_locks_per_transaction).
 # It is not advisable to set max_prepared_transactions nonzero unless you
 # actively intend to use prepared transactions.
-#work_mem = 1MB				# min 64kB
+work_mem = <%= @work_mem %> 	# min 64kB
 #maintenance_work_mem = 16MB		# min 1MB
 #max_stack_depth = 2MB			# min 100kB
 
@@ -192,9 +192,9 @@ shared_buffers = 24MB			# min 128kB
 
 # - Checkpoints -
 
-checkpoint_segments = 16		# in logfile segments, min 1, 16MB each
+checkpoint_segments = <%= @checkpoint_segments %> # in logfile segments, min 1, 16MB each
 #checkpoint_timeout = 5min		# range 30s-1h
-#checkpoint_completion_target = 0.5	# checkpoint target duration, 0.0 - 1.0
+checkpoint_completion_target = <%= @checkpoint_completion_target %> # checkpoint target duration, 0.0 - 1.0
 #checkpoint_warning = 30s		# 0 disables
 
 # - Archiving -
@@ -266,7 +266,7 @@ checkpoint_segments = 16		# in logfile segments, min 1, 16MB each
 #cpu_tuple_cost = 0.01			# same scale as above
 #cpu_index_tuple_cost = 0.005		# same scale as above
 #cpu_operator_cost = 0.0025		# same scale as above
-#effective_cache_size = 128MB
+effective_cache_size = <%= @effective_cache_size %>	
 
 # - Genetic Query Optimizer -
 
@@ -430,8 +430,8 @@ log_line_prefix = '%t '			# special values:
 
 track_activities = on
 track_counts = on
-track_functions = all			# none, pl, all
-track_activity_query_size = 1024 	# (change requires restart)
+track_functions = all # none, pl, all
+track_activity_query_size = 1024 # (change requires restart)
 track_io_timing = on
 #update_process_title = on
 stats_temp_directory = 'pg_stat_tmp'
@@ -449,7 +449,7 @@ stats_temp_directory = 'pg_stat_tmp'
 # AUTOVACUUM PARAMETERS
 #------------------------------------------------------------------------------
 
-autovacuum = on			# Enable autovacuum subprocess?  'on'
+autovacuum = on		# Enable autovacuum subprocess?  'on'
 					# requires track_counts to also be on.
 #log_autovacuum_min_duration = -1	# -1 disables, 0 logs all actions and
 					# their durations, > 0 logs only

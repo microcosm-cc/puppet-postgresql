@@ -11,7 +11,12 @@ class postgresql::server (
   $ssl_key_file  = $postgresql::params::ssl_key_file,
   $preacl = [],
   $acl = [],
-  $manage_service = true
+  $manage_service = true,
+  $shared_buffers = '24MB',
+  $work_mem = '1MB',
+  $checkpoint_segments = 16,
+  $checkpoint_completion_target = 0.5,
+  $effective_cache_size = '128MB'
 ) inherits postgresql::params {
 
   file { 'postgresql-server-policyrc.d':
