@@ -78,4 +78,12 @@ class postgresql::server (
     notify  => $notify_service,
   }
 
+  file { "postgresql-sysctl":
+    name => "/etc/sysctl.d/30-postgresql-shm.conf",
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => '0444',
+    source => "puppet:///modules/postgresql/30-postgresql-shm.conf",
+  }
 }
