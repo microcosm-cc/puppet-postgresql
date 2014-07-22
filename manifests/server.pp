@@ -16,7 +16,8 @@ class postgresql::server (
   $work_mem = '1MB',
   $checkpoint_segments = 16,
   $checkpoint_completion_target = 0.5,
-  $effective_cache_size = '128MB'
+  $effective_cache_size = '128MB',
+  $log_autovacuum_min_duration = -1,
 ) inherits postgresql::params {
 
   file { 'postgresql-server-policyrc.d':
