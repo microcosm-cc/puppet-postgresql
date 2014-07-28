@@ -12,12 +12,18 @@ class postgresql::server (
   $preacl = [],
   $acl = [],
   $manage_service = true,
-  $shared_buffers = '24MB',
-  $work_mem = '1MB',
-  $checkpoint_segments = 16,
-  $checkpoint_completion_target = 0.5,
-  $effective_cache_size = '128MB',
   $log_autovacuum_min_duration = -1,
+  $max_connections = 100,
+  $shared_buffers = '24MB',
+  $effective_cache_size = '128MB',
+  $work_mem = '1MB',
+  $maintenance_work_mem = '32MB',
+  $checkpoint_segments = 32,
+  $checkpoint_completion_target = 0.7,
+  $wal_buffers = '1MB',
+  $default_statistics_target = 100,
+  $shmmax=536870912,
+  $shmall=131072,
 ) inherits postgresql::params {
 
   file { 'postgresql-server-policyrc.d':
@@ -80,11 +86,11 @@ class postgresql::server (
   }
 
   file { "postgresql-sysctl":
-    name => "/etc/sysctl.d/30-postgresql-shm.conf",
-    ensure => present,
-    owner => root,
-    group => root,
-    mode => '0444',
-    source => "puppet:///modules/postgresql/30-postgresql-shm.conf",
+    name    => "/etc/sysctl.d/30-postgresql-shm.conf",
+    ensure  => present,
+    content => template('postgresql/30-postgresql-shm.conf.erb'),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0444',
   }
 }
