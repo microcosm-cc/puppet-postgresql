@@ -14,16 +14,16 @@ class postgresql::server (
   $manage_service = true,
   $log_autovacuum_min_duration = -1,
   $max_connections = 100,
-  $shared_buffers = '24MB',
-  $effective_cache_size = '128MB',
-  $work_mem = '1MB',
-  $maintenance_work_mem = '32MB',
+  $shared_buffers = '768MB',
+  $effective_cache_size = '2304MB',
+  $work_mem = '16MB',
+  $maintenance_work_mem = '7864kB',
   $checkpoint_segments = 32,
   $checkpoint_completion_target = 0.7,
-  $wal_buffers = '1MB',
+  $wal_buffers = '16MB',
   $default_statistics_target = 100,
-  $shmmax=536870912,
-  $shmall=131072,
+  $shmmax=1610612736,
+  $shmall=393216,
 ) inherits postgresql::params {
 
   file { 'postgresql-server-policyrc.d':
