@@ -70,7 +70,7 @@ class postgresql::server (
     owner   => 'postgres',
     group   => 'postgres',
     mode    => '0644',
-    require => Package["postgresql-server-$version"],
+    require => [Package["postgresql-server-$version"],[Exec["postgresql-shm"]]],
     notify  => $notify_service,
   }
 
@@ -83,6 +83,11 @@ class postgresql::server (
     mode    => '0640',
     require => Package["postgresql-server-$version"],
     notify  => $notify_service,
+  }
+
+  exec { "postgresql-shm":
+    command => "sysctl -w kernel.shmmax=${shmmax} && sysctl -w kernel.shmall=${shmall}",
+    path    => "/usr/local/bin/:/sbin/",
   }
 
   file { "postgresql-sysctl":
